@@ -1,0 +1,12 @@
+FROM python:3.10
+WORKDIR /app
+COPY . .
+CMD ["Python" , "app.py"]
+
+FROM tomcat:10.1
+COPY  index.html /usr/local/tomcat/webapps/dock3/index.html
+EXPOSE 8080
+
+& "C:\Users\Admin\Downloads\apache-maven-3.9.16-bin\apache-maven-3.9.16\bin\mvn.cmd" archetype:generate "-DarchetypeGroupId=org.apache.maven.archetypes" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DarchetypeVersion=1.5" "-DgroupId=demo" "-DartifactId=demo" "-DinteractiveMode=false"
+
+mvn org.apache.maven.plugins:maven-archetype-plugin:3.1.2:generate -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeVersion=1.5 -DgroupId=demo -DartifactId=demo
